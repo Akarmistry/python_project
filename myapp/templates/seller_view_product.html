@@ -1,0 +1,45 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>	
+</head>
+<body>
+	<br><br>
+	<!-- start product Area -->
+	<br><br><br>
+	<section style="margin-top: 130px;">
+		<!-- single product slide -->
+		<div class="single-product-slider">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-6 text-center">
+						<div class="section-title">
+							<h1>My Products</h1>
+						</div>
+					</div>
+				</div><br><br><br>
+				<div class="row">
+					<!-- single product -->
+					{% for i in products %}
+					<div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<a href="{% url 'seller_product_detail'  pk=i.pk %}">
+								<img class="img-fluid"  src="{{ i.product_image.url }}" alt="" style="width: 250px;height: 250px;">
+								<div class="product-details">
+									<h6>{{i.product_name}}</h6>
+									<div class="price">
+										<h6>RS. {{i.product_price}}</h6>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+</body>
+</html>
+{% endblock %}
